@@ -1,0 +1,54 @@
+{
+    "name": "npakatar/blueprint-crud-templates",
+    "description": "",
+    "keywords": [
+        "npakatar",
+        "blueprint-crud-templates"
+    ],
+    "homepage": "https://github.com/npakatar/blueprint-crud-templates",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Nick Pakatar",
+            "email": "nick@nickpakatar.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Npakatar\\BlueprintCrudTemplates\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Npakatar\\BlueprintCrudTemplates\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Npakatar\\BlueprintCrudTemplates\\BlueprintCrudTemplatesServiceProvider"
+            ],
+            "aliases": {
+                "BlueprintCrudTemplates": "Npakatar\\BlueprintCrudTemplates\\BlueprintCrudTemplatesFacade"
+            }
+        }
+    }
+}
