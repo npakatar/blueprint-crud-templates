@@ -1,21 +1,22 @@
 <?php
 
+
 namespace Npakatar\BlueprintCrudTemplates\Tests;
 
-use Orchestra\Testbench\TestCase;
+
 use Npakatar\BlueprintCrudTemplates\BlueprintCrudTemplatesServiceProvider;
+use Orchestra\Testbench\TestCase;
 
-class ExampleTest extends TestCase
+class BaseTestCase extends TestCase
 {
-
     protected function getPackageProviders($app)
     {
         return [BlueprintCrudTemplatesServiceProvider::class];
     }
-    
-    /** @test */
-    public function true_is_true()
+
+
+    public function fixture(string $path)
     {
-        $this->assertTrue(true);
+        return file_get_contents(__DIR__ . '/' . 'Fixtures' . '/' . ltrim($path, '/'));
     }
 }

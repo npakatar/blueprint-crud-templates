@@ -1,0 +1,6 @@
+templates:
+    Post:
+        index: title, content
+        create: title, content
+        edit: title, content
+        show: title, content

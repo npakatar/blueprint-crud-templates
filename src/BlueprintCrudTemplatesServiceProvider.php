@@ -2,7 +2,9 @@
 
 namespace Npakatar\BlueprintCrudTemplates;
 
+use Blueprint\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Npakatar\BlueprintCrudTemplates\Lexers\TemplateLexer;
 
 class BlueprintCrudTemplatesServiceProvider extends ServiceProvider
 {
@@ -52,9 +54,10 @@ class BlueprintCrudTemplatesServiceProvider extends ServiceProvider
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'blueprint-crud-templates');
 
-        // Register the main class to use with the facade
-        $this->app->singleton('blueprint-crud-templates', function () {
-            return new BlueprintCrudTemplates;
+        $this->app->extend(Blueprint::class, function (Blueprint $blueprint, $app) {
+            $blueprint->registerLexer(app(TemplateLexer::class));
+
+            return $blueprint;
         });
     }
 }
