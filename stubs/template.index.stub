@@ -1,0 +1,31 @@
+<template>
+    <div>
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th v-for="field in fields" class="px-4 py-2">{{ field }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template v-if="{{ dummyModel }}.length > 0">
+            <tr v-for="model in {{ dummyModel }}">
+              <td v-for="field in fields" class="border px-4 py-2">{{ model['{{ field }}'] }}</td>
+            </tr>
+
+            <template v-else> <div> No Data </div> </template>
+          </tbody>
+        </table>
+    </div>
+</template>
+
+<script>
+    export default {
+        props: ['{{ dummyModel }}'],
+
+        data() {
+            return {
+               fields: [{{ fields }}]
+            }
+        },
+    }
+</script>

@@ -19,4 +19,9 @@ class BaseTestCase extends TestCase
     {
         return file_get_contents(__DIR__ . '/' . 'Fixtures' . '/' . ltrim($path, '/'));
     }
+
+    public function stub(string $path)
+    {
+        return file_get_contents(__DIR__ . '/../' . 'stubs' . '/' . ltrim($path, '/'));
+    }
 }
