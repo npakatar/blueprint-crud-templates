@@ -1,9 +1,9 @@
 <?php
 
-namespace Npakatar\BlueprintCrudTemplates\Tests;
+namespace Npakatar\BlueprintCrudTemplates\Tests\Unit;
 
-use Blueprint\Blueprint;
 use Npakatar\BlueprintCrudTemplates\Lexers\TemplateLexer;
+use Npakatar\BlueprintCrudTemplates\Tests\BaseTestCase;
 
 class TemplateLexerTest extends BaseTestCase
 {
@@ -16,7 +16,15 @@ class TemplateLexerTest extends BaseTestCase
         $this->lexer = app(TemplateLexer::class);
     }
 
+    /** @test */
+    public function it_returns_nothing_without_templates_listed()
+    {
+        $tokens = [
+            'templates' => []
+        ];
 
+        $this->assertEquals($tokens, $this->lexer->analyze([]));
+    }
 
     /** @test */
     public function it_analyzes_templates()
@@ -44,15 +52,5 @@ class TemplateLexerTest extends BaseTestCase
             'edit' => 'title, content',
             'show' => 'title, content',
         ], $actual['templates']['Post']);
-    }
-
-    /** @test */
-    public function it_returns_nothing_without_templates_listed()
-    {
-        $tokens = [
-            'templates' => []
-        ];
-
-        $this->assertEquals($tokens, $this->lexer->analyze([]));
     }
 }

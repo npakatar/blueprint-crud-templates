@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Npakatar\BlueprintCrudTemplates\Tests;
-
+namespace Npakatar\BlueprintCrudTemplates\Tests\Feature;
 
 use Blueprint\Blueprint;
+use Npakatar\BlueprintCrudTemplates\Tests\BaseTestCase;
 
 class EndToEndTest extends BaseTestCase
 {
