@@ -54,7 +54,7 @@ class TemplateGenerator implements Generator
 
     protected function populateIndexStub($stub, $model, $fields)
     {
-        $stub = str_replace('{{ dummyModel }}', Str::plural(lcfirst('Post')), $stub);
+        $stub = str_replace('{{ dummyModel }}', Str::plural(lcfirst($model)), $stub);
         $stub = str_replace('{{ fields }}', $this->splitFields($fields), $stub);
 
         return $stub;
@@ -62,6 +62,12 @@ class TemplateGenerator implements Generator
 
     protected function splitFields($fields)
     {
-        return "['title', 'content']";
+        $parsedFields = collect(array_map('trim', explode(',', $fields)))
+            ->map(function ($thing) {
+                return "'${thing}'";
+            })
+            ->join(', ');
+
+        return "[{$parsedFields}]";
     }
 }
