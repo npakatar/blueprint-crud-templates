@@ -7,8 +7,8 @@
                 </tr>
             </thead>
             <tbody>
-                <template v-if="{{ dummyModel }}.length > 0">
-                    <tr v-for="model in {{ dummyModel }}">
+                <template v-if="posts.length > 0">
+                    <tr v-for="model in posts">
                         <td v-for="field in fields" class="border px-4 py-2">{{ model[field] }}</td>
                     </tr>
 
@@ -23,11 +23,11 @@
 
 <script>
     export default {
-        props: ['{{ dummyModel }}'],
+        props: ['posts'],
 
         data() {
             return {
-                fields: {{ fields }}
+                fields: ['title', 'content']
             }
         },
     }

@@ -11,7 +11,7 @@ class EndToEndTest extends BaseTestCase
     /** @test */
     public function it_registers_template_lexer_and_analyzes_templates()
     {
-        $template = $this->fixture('draft.yaml');
+        $template = $this->fixture('drafts/draft.yaml');
 
         $blueprint = app(Blueprint::class);
 
