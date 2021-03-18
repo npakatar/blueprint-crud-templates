@@ -11,10 +11,10 @@
                     <tr v-for="model in {{ dummyModel }}">
                         <td v-for="field in fields" class="border px-4 py-2">{{ model[field] }}</td>
                     </tr>
+                </template>
 
-                    <template v-else>
-                        <div> No Data </div>
-                    </template>
+                <template v-else>
+                    <div> No Data </div>
                 </template>
             </tbody>
         </table>
