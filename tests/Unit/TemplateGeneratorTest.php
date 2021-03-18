@@ -24,7 +24,7 @@ class TemplateGeneratorTest extends BaseTestCase
 
         $this->files = \Mockery::mock();
         $this->generator = new TemplateGenerator($this->files);
-        $this->indexStub = '/Users/npakatar/Documents/Play/project-jump/blueprint-crud-templates/stubs/template.index.stub';
+        $this->indexStub = dirname(__DIR__, 2).'/stubs/template.index.stub';
     }
 
     /** @test */
