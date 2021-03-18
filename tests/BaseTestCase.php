@@ -22,6 +22,6 @@ class BaseTestCase extends TestCase
 
     public function stub(string $path)
     {
-        return file_get_contents(__DIR__ . '/../' . 'stubs' . '/' . ltrim($path, '/'));
+        return file_get_contents($path);
     }
 }

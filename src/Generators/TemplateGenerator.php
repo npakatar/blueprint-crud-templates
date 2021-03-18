@@ -24,8 +24,13 @@ class TemplateGenerator implements Generator
         $this->tree = $tree;
 
         foreach ($this->tree->toArray()['templates'] as $model => $resources) {
-            $stub = $this->files->stub('template.index.stub');
+            // TODO stub out other CRUD screens, make dynamic
+            $stub = $this->files->get(dirname(__DIR__, 2).'/stubs/template.index.stub');
             $path = $this->getPath($model, 'index');
+
+            if (! $this->files->exists(dirname($path))) {
+                $this->files->makeDirectory(dirname($path), 0755, true);
+            }
 
             $this->files->put($path, $this->populateIndexStub($stub, $model, $resources['index']));
 

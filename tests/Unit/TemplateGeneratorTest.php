@@ -24,7 +24,7 @@ class TemplateGeneratorTest extends BaseTestCase
 
         $this->files = \Mockery::mock();
         $this->generator = new TemplateGenerator($this->files);
-        $this->indexStub = 'template.index.stub';
+        $this->indexStub = '/Users/npakatar/Documents/Play/project-jump/blueprint-crud-templates/stubs/template.index.stub';
     }
 
     /** @test */
@@ -39,9 +39,16 @@ class TemplateGeneratorTest extends BaseTestCase
     {
         $path = 'resources/js/Pages/Post/Index.vue';
 
-        $this->files->expects('stub')
+        $this->files->expects('get')
             ->with($this->indexStub)
             ->andReturn($this->stub($this->indexStub));
+
+        $this->files->expects('exists')
+            ->with(dirname($path))
+            ->andReturn(false);
+
+        $this->files->expects('makeDirectory')
+            ->with(dirname($path), 0755, true);
 
         $this->files->expects('put')
             ->with($path, $this->fixture('outputs/Post/Index.vue'));
